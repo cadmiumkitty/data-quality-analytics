@@ -75,3 +75,4 @@ Role, Party, AddressPurpose, Place, System
 1. [Creating a Structured Vocabulary](https://www.meetup.com/Knowledge-Organisation-London/events/284319067/) by Leonard Will.
 1. [Metaphors We Live By](https://www.goodreads.com/book/show/34459.Metaphors_We_Live_By) by George Lakoff and Mark Johnson.
 1. [The Discipline of Organizing: 4th Professional Edition](https://open.umn.edu/opentextbooks/textbooks/913) by Robert J. Glushko.
+1. [The Data Warehouse Toolkit, 3rd Edition](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/) by Ralph Kimball and Margy Ross.
