@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  mariadb:
+    image: mariadb:11.2.2-jammy
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes: 
+      - ./mariadb-data:/var/lib/mysql
+    env_file:
+      - vars-mariadb-docker.env
+  adminer:
+    image: adminer:4.8.1-standalone
+    restart: always
+    ports:
+      - 8080:8080
+    env_file:
+      - vars-adminer-docker.env
