@@ -29,6 +29,7 @@ Looks like several conventions are possible, most are around prefixes and suffix
 1. Using Type 0 dimensions for all hierarchies to test the display.
 1. Place hierarchy needs to be adopted to what we see in the data - we may need to make it more dimensional (e.g., Australian State versus US State is really a couple of fundamental concepts put together - country and state - and validation rules may be different).
 1. Equal weighting for roll-ups, even though it need to be weighted appropriately (e.g., by number of records)
+1. Security concerns are ignored (i.e., there are usernames and passwords in the scripts)
 
 ## Visualizations
 
