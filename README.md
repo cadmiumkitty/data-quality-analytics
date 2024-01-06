@@ -17,10 +17,10 @@ Looks like several conventions are possible, most are around prefixes and suffix
 
 ## Design decisions
 
-1. Goal is the efficient retrieval and visualization of data quality information.
+1. Goal is the efficient retrieval and visualisation of data quality information.
 1. Use plain set of hierarchies ignoring groups of fundamental concepts (e.g., Abstract Concepts).
-1. Use individual dimension columns in the fact table for each dimension (e.g., Role, Party). Result in many dimension key columns in the fact table but makes it easy to visualize.
-1. Use plain fixed-depth hierarchies for dimensions to simplify browsing and visualization (i.e., no bridge tables).
+1. Use individual dimension columns in the fact table for each dimension (e.g., Role, Party). Result in many dimension key columns in the fact table but makes it easy to visualise.
+1. Use plain fixed-depth hierarchies for dimensions to simplify browsing and visualisation (i.e., no bridge tables).
 1. Start with plain SQL, then try dbt.
 1. Although System is a kind of data container, people tend to think in terms of systems when discussing lineage at the least granular level.
 
@@ -31,7 +31,7 @@ Looks like several conventions are possible, most are around prefixes and suffix
 1. Equal weighting for roll-ups, even though it need to be weighted appropriately (e.g., by number of records)
 1. Security concerns are ignored (i.e., there are usernames and passwords in the scripts)
 
-## Visualizations
+## Visualisations
 
 Simple Tableau visualisations of randomly generated data quality information.
 
