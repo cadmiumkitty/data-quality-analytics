@@ -1,4 +1,4 @@
-# Data Quality Visualization
+# Data Quality Analytics
 
 ## Introduction
 
