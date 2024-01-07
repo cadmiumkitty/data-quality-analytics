@@ -2,42 +2,44 @@
 
 ## Introduction
 
-People at different levels within an organisation require different perspectives on data quality, and it is essential to present these views in a way that aligns with the language they use. For example, when discussing data quality with a CEO or board member, it is crucial to present the information in a way that is accessible to them, such as referring to "customer data" without delving into the specifics of how it is used across different business units. However, when speaking with a head of function or a report user, providing information on the quality of the "customer data" pertaining to specific use cases is critical.
+People at different levels within an organisation require different perspectives on data quality, and it is essential to present these views in a way that aligns with the language they use. For example, when discussing data quality with a CEO or board member, it is crucial to present the information in a way that is accessible to them, such as referring to "customer data" without delving into the specifics of different definitions or how it is used across different business units. However, when speaking with a head of a function or a user of a report, it is critical to provide information on the quality of the "customer data" pertaining to specific use cases.
 
-Developing a business glossary using faceted classification can be an effective way to connect the language of the business with dimensional data quality information that can then be sliced to quickly gain a clear understanding of the data quality across different areas of the organisation. This prototype shows how it can be done.
+Developing a business glossary using faceted classification can be an effective way to connect the language of the business with dimensional data quality information that can be sliced to quickly gain an understanding of the data quality across different business units of the organisation.
+
+## Design decisions
+
+1. Optimise for efficient retrieval and visualisation of data quality information as opposed to its capture to simplify analysis and visualisation.
+1. Use a flat-ish set of concept hierarchies ignoring fundamental concept categories (e.g., Abstract Concepts, Activities) to simplify browsing in a visualisation tool.
+1. Use individual dimension key columns in the fact table for each dimension (e.g., Role, Party) to allow for intuitive filtering and grouping that matches business glossary hierarchies.
+1. Use plain fixed-depth hierarchies for dimensions to simplify browsing and visualisation (i.e., no bridge tables).
+1. Use a single fact table per data quality dimensions to minimise filtering yet allow for aggregation.
+1. Start with plain SQL, then try dbt or similar, as I want to test the concept quickly.
+1. Although a system is a kind of data container, people tend to think about systems when discussing lineage at the least granular level, so keep it as a separate dimension. 
+
+## Known limitations
+
+1. Use Type 0 dimensions for all hierarchies to test the visualisation quickly.
+1. Adapt the Place hierarchy to what we eventually see in data - we may need to have several facets (e.g., Australian State versus US State is really a couple of fundamental concepts combined - country and state).
+1. Equal weighting is used for roll-ups, even though average measures of quality need to be weighted appropriately (e.g., by a number of records).
+1. Security concerns are ignored (i.e., plain-text usernames and passwords are right in the scripts).
+1. Lineage is ignored but eventually needs to be considered when measuring data quality.
+
+## Visualisations
+
+A couple of Tableau visualisations of randomly generated data quality information are provided below.
+
+![Data Quality Heatmap](visualization-heatmap.png "Data Quality Heatmap")
+
+![Data Quality Time Series](visualization-timeseries.png "Data Quality Time Series")
 
 ## Database table naming convention
 
-Looks like several conventions are possible, most are around prefixes and suffixes. 
+Pick a convention for table naming. 
 
 | Prefix    | Description     |
 |-----------|-----------------|
 | fact_     | Fact table      |
 | dim_      | Dimension table |
-
-## Design decisions
-
-1. Goal is the efficient retrieval and visualisation of data quality information.
-1. Use plain set of hierarchies ignoring groups of fundamental concepts (e.g., Abstract Concepts).
-1. Use individual dimension columns in the fact table for each dimension (e.g., Role, Party). Result in many dimension key columns in the fact table but makes it easy to visualise.
-1. Use plain fixed-depth hierarchies for dimensions to simplify browsing and visualisation (i.e., no bridge tables).
-1. Start with plain SQL, then try dbt.
-1. Although System is a kind of data container, people tend to think in terms of systems when discussing lineage at the least granular level.
-
-## Known limitations
-
-1. Using Type 0 dimensions for all hierarchies to test the display.
-1. Place hierarchy needs to be adopted to what we see in the data - we may need to make it more dimensional (e.g., Australian State versus US State is really a couple of fundamental concepts put together - country and state - and validation rules may be different).
-1. Equal weighting for roll-ups, even though it need to be weighted appropriately (e.g., by number of records)
-1. Security concerns are ignored (i.e., there are usernames and passwords in the scripts)
-
-## Visualisations
-
-Simple Tableau visualisations of randomly generated data quality information.
-
-![Data Quality Heatmap](visualization-heatmap.png "Data Quality Heatmap")
-
-![Data Quality Time Series](visualization-timeseries.png "Data Quality Time Series")
 
 ## Simple analytical queries
 
