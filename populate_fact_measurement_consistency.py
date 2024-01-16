@@ -10,6 +10,15 @@ cursor = connection.cursor()
 
 measurements = {}
 
+# Construct a scenario where quality of data is poor in Lending system for
+# Legal Entity Customer Collateral Addres starting in October 2023
+drop_date_id = 9
+drop_role_id = 1
+drop_party_id = 2
+drop_address_purpose_id = 2
+drop_place_id = [2, 4]
+drop_system_id = [1, 2, 3, 4, 5]
+
 for date_id in range(1, 13):
 
     print(f'Populating date id: {date_id}.')
@@ -23,7 +32,15 @@ for date_id in range(1, 13):
                         measurement_consistency_key = (role_id, party_id, address_purpose_id, place_id, system_id, 0, 0)
 
                         if measurement_consistency_key in measurements:
-                            measurement_consistency_delta = random.uniform(-0.2, 0.2)
+                            if date_id == drop_date_id and \
+                                    role_id == drop_role_id and \
+                                    party_id == drop_party_id and \
+                                    address_purpose_id == drop_address_purpose_id and \
+                                    place_id in drop_place_id and \
+                                    system_id in drop_system_id:
+                                measurement_consistency_delta = random.uniform(-0.7, -0.5)
+                            else:
+                                measurement_consistency_delta = random.uniform(-0.05, 0.05)
                             consistency_current = measurements[measurement_consistency_key]
                             if consistency_current + measurement_consistency_delta > 1.0:
                                 measurements.update({measurement_consistency_key: 1.0 })
@@ -32,7 +49,7 @@ for date_id in range(1, 13):
                             else:
                                 measurements.update({measurement_consistency_key: consistency_current + measurement_consistency_delta })
                         else:
-                            measurement_consistency_initial = random.uniform(0.3, 0.7)
+                            measurement_consistency_initial = random.uniform(0.8, 0.9)
                             measurements[measurement_consistency_key] = measurement_consistency_initial
 
                         measurement_consistency_data = {

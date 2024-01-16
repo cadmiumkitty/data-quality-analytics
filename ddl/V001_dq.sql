@@ -112,7 +112,7 @@ INSERT INTO dim_concept_place (id, label_l1)
 VALUES
 (0, 'Unknown'),
 (1, 'Country'),
-(2, 'State'),3
+(2, 'State'),
 (3, 'Address'),
 (4, 'Postal Code');
 
