@@ -14,7 +14,7 @@ The first image shows a data quality issue "hot spot" for several systems proces
 
 ![Data Quality Heatmap](visualization-heatmap.png "Data Quality Heatmap")
 
-The second image shows a drill-down for these particular systems with a drop in data quality in October 2023.
+The second image shows a drill-down for the Lending system with a drop in data quality in October 2023.
 
 ![Data Quality Time Series](visualization-timeseries.png "Data Quality Time Series")
 
