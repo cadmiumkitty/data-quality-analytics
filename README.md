@@ -2,9 +2,28 @@
 
 ## Introduction
 
-People at different levels within an organisation require different perspectives on data quality, and it is essential to present these views in a way that aligns with the language they use. For example, when discussing data quality with a CEO or board member, it is crucial to present the information in a way that is accessible to them, such as referring to "customer data" without delving into the specifics of different definitions or how it is used across different business units. However, when speaking with a head of a function or a user of a report, it is critical to provide information on the quality of the "customer data" pertaining to specific use cases.
+People at different levels of an organisation need different views of data quality and data risk, and it is essential to present these views in a way that aligns with their language. For example, when discussing data quality with a CEO or board member, it is crucial to present a coarse-grained view of data quality and talk about "customer data" without delving into the specifics of different definitions or how that data is used across various business units. However, when speaking with a head of a function or a user of a report, it is necessary to provide information on the quality of the "customer data" related to specific use cases.
 
-Developing a business glossary using faceted classification can be an effective way to connect the language of the business with dimensional data quality information that can be sliced to quickly gain an understanding of the data quality across different business units of the organisation.
+Developing a business glossary using faceted classification, a set of hierarchies across mutually exclusive fundamental concepts, can effectively connect the business language with dimensional data quality measurements. The measurements can then be sliced to understand the data quality issues at the right level of granularity and plan for their resolution.
+
+## Visualisations
+
+Tableau visualisations of randomly generated data quality measurements to demonstrate how faceted classification can be used in practice for data quality analytics.
+
+The first image shows a data quality issue "hot spot" for several systems processing collateral address information for business loans.
+
+![Data Quality Heatmap](visualization-heatmap.png "Data Quality Heatmap")
+
+The second image shows a drill-down for these particular systems with a drop in data quality in October 2023.
+
+![Data Quality Time Series](visualization-timeseries.png "Data Quality Time Series")
+
+## References
+
+1. [Creating a Structured Vocabulary](https://www.meetup.com/Knowledge-Organisation-London/events/284319067/) by Leonard Will.
+1. [Metaphors We Live By](https://www.goodreads.com/book/show/34459.Metaphors_We_Live_By) by George Lakoff and Mark Johnson.
+1. [The Discipline of Organizing: 4th Professional Edition](https://open.umn.edu/opentextbooks/textbooks/913) by Robert J. Glushko.
+1. [The Data Warehouse Toolkit, 3rd Edition](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/) by Ralph Kimball and Margy Ross.
 
 ## Design decisions
 
@@ -23,14 +42,6 @@ Developing a business glossary using faceted classification can be an effective 
 1. Equal weighting is used for roll-ups, even though average measures of quality need to be weighted appropriately (e.g., by a number of records).
 1. Security concerns are ignored (i.e., plain-text usernames and passwords are right in the scripts).
 1. Lineage is ignored but eventually needs to be considered when measuring data quality.
-
-## Visualisations
-
-A couple of Tableau visualisations of randomly generated data quality information are provided below.
-
-![Data Quality Heatmap](visualization-heatmap.png "Data Quality Heatmap")
-
-![Data Quality Time Series](visualization-timeseries.png "Data Quality Time Series")
 
 ## Database table naming convention
 
@@ -71,10 +82,3 @@ dim_date.date_financial_year_quarter IN ('Q1', 'Q2')
 GROUP BY
 Role, Party, AddressPurpose, Place, System
 ```
-
-## References
-
-1. [Creating a Structured Vocabulary](https://www.meetup.com/Knowledge-Organisation-London/events/284319067/) by Leonard Will.
-1. [Metaphors We Live By](https://www.goodreads.com/book/show/34459.Metaphors_We_Live_By) by George Lakoff and Mark Johnson.
-1. [The Discipline of Organizing: 4th Professional Edition](https://open.umn.edu/opentextbooks/textbooks/913) by Robert J. Glushko.
-1. [The Data Warehouse Toolkit, 3rd Edition](https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/) by Ralph Kimball and Margy Ross.
